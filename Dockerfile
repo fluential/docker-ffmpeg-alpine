@@ -1,8 +1,7 @@
 # ffmpeg - http://ffmpeg.org/download.html
 #
-# https://hub.docker.com/r/fluential/ffmpeg/
+# https://hub.docker.com/r/jrottenberg/ffmpeg/
 #
-# Includes frei0r filters
 #
 
 FROM        alpine:3.13.2 AS base
@@ -91,6 +90,7 @@ RUN     buildDeps="autoconf \
                    tar \
                    yasm \
                    nasm \
+                   librtmp \
                    zlib-dev \
                    expat-dev" && \
         apk add --no-cache --update ${buildDeps}
@@ -105,6 +105,7 @@ RUN \
         make && \
         make install && \
         rm -rf ${DIR}
+
 ## x264 http://www.videolan.org/developers/x264.html
 RUN \
         DIR=/tmp/x264 && \
@@ -518,6 +519,7 @@ RUN \
         --enable-libx264 \
         --enable-nonfree \
         --enable-openssl \
+        --enable-libx264 \
         --enable-libfdk_aac \
         --enable-postproc \
         --enable-small \
