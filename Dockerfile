@@ -91,6 +91,7 @@ RUN     buildDeps="autoconf \
                    yasm \
                    nasm \
                    librtmp \
+                   rtmpdump-dev \
                    zlib-dev \
                    expat-dev" && \
         apk add --no-cache --update ${buildDeps}
